@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const api = {
-  key: "3163660e55591e48bebbd91b01176891",
-  base: "https://api.openweathermap.org/data/2.5/"
-}
+import useLocalStorage from './utils/useLocalStorage.js';
+import { fetchWeather } from './api/fetchWeather';
 
 function App() {
 
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  // const [city, setCity] = useLocalStorage('city', 'Berlin');
 
-  const search = evt => {
+  const search = async (evt) => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(result => {
-          setWeather(result);
-          setQuery('');
-          console.log(result);
-        });
+      const data = await fetchWeather(query);
+      setWeather(data);
+      setQuery('');
     }
   }
 
@@ -52,6 +47,9 @@ function App() {
             <div className="info">
                 <img className="city-icon" src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={weather.weather[0].description} />
                 <p>{weather.weather[0].description}</p>
+            </div>
+            <div className="info">
+                <p>Wind: {weather.wind.speed} m/s</p>
             </div>
         </div>
     )}
