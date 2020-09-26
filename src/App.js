@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="main-container">
-      <h1>Weather app</h1>
+      <h1 className="app-header">Weather app</h1>
       <input type="text"className="search"placeholder="Search city..."value={query}onChange={(e) => setQuery(e.target.value)}onKeyPress={search}/>
       {weather.main && (
           <div className="city">
