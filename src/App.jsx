@@ -73,63 +73,79 @@ function App() {
       <h1 className="app-header">Weather app</h1>
 
       <div className="search-wrapper">
-        <input type="text"className="search" placeholder="Search city..." value={query} onChange={(e) => setQuery(e.target.value)} onKeyPress={handleEnter}/>
-        <input type="submit" className="search-button" onClick={searchForecast} value=""/>
+        <input
+          type="text"
+          className="search"
+          placeholder="Search city..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyPress={handleEnter}
+        />
+        <input
+          type="submit"
+          className="search-button"
+          onClick={searchForecast}
+          value=""
+        />
       </div>
 
-      <div className="tabs-container"> 
-
+      <div className="tabs-container">
         <Tabs type="card">
-
-        {forecast.map(weather => (
+          {forecast.map((weather) => (
             <TabPane tab={weather.dayDate} key={weather.dayDate}>
               <div className="city city--top">
-
                 <h2 className="city-name">
-                    <span>{city.name}</span>
-                    <sup>{city.country}</sup>
+                  <span>{city.name}</span>
+                  <sup>{city.country}</sup>
                 </h2>
-                    {/* <div className="date">{dateBuilder(new Date())}</div> */}
+                {/* <div className="date">{dateBuilder(new Date())}</div> */}
                 <div className="info">
                   <div className="city-info-wrapper">
                     <div className="city-temp">
-                        {Math.round(weather.data[0].main.temp)}
-                        <sup>&deg;C</sup>
+                      {Math.round(weather.data[0].main.temp)}
+                      <sup>&deg;C</sup>
                     </div>
-                    <img className="city-icon" src={`https://openweathermap.org/img/wn/${weather.data[0].weather[0].icon}@2x.png`} alt={weather.data[0].weather[0].description} />
+                    <img
+                      className="city-icon"
+                      src={`https://openweathermap.org/img/wn/${weather.data[0].weather[0].icon}@2x.png`}
+                      alt={weather.data[0].weather[0].description}
+                    />
                   </div>
-                    <p>{weather.data[0].weather[0].description}</p>
+                  <p>{weather.data[0].weather[0].description}</p>
                 </div>
-
               </div>
 
-              <div className="city time-card-wrapper city--bottom" key={weather.dayDate}>
-
-                {weather.data.map(x => (
-                  
-                  <React.Fragment>
-
-                    <div className="time-card" key={x.dt}>
-                      <p className="time-card__time">{ (x.dt_txt.split(' ')[1]).split(':').slice(0, 2).join(':') }</p>
+              <div
+                className="city time-card-wrapper city--bottom"
+                key={weather.dayDate}
+              >
+                {weather.data.map((x) => (
+                  <React.Fragment key={x.dt}>
+                    <div className="time-card">
+                      <p className="time-card__time">
+                        {x.dt_txt.split(" ")[1].split(":").slice(0, 2).join(":")}
+                      </p>
                       <div className="time-card__icon"></div>
                       <div className="info">
-                            <img className="city-icon city-icon--small" src={`https://openweathermap.org/img/wn/${x.weather[0].icon}@2x.png`} alt={x.weather[0].description} />
-                        </div>
-                      <p className="time-card__temperature">{Math.round(x.main.temp)} Cº</p>
+                        <img
+                          className="city-icon city-icon--small"
+                          src={`https://openweathermap.org/img/wn/${x.weather[0].icon}@2x.png`}
+                          alt={x.weather[0].description}
+                        />
+                      </div>
+                      <p className="time-card__temperature">
+                        {Math.round(x.main.temp)} Cº
+                      </p>
                       <div className="time-card__wind">{x.wind.speed} m/s</div>
                     </div>
                   </React.Fragment>
-
                 ))}
               </div>
-
             </TabPane>
-        ))}
-      </Tabs>
-      
+          ))}
+        </Tabs>
       </div>
-
-  </div>
+    </div>
   );
 }
 
