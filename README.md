@@ -1,6 +1,14 @@
-Frontend Coding Challenge Hopkins
-=================
 This challenge is about building a small interface that shows the weather for the next 3 days. As a user I would want to be able to use it to get the following information.
+
+### Setup
+```bash
+npm install
+```
+### Run
+
+```bash
+npm run start
+```
 
 ### Requirements
 1. In the morning I want to check the weather for today to make sure that I can dress accordingly.
