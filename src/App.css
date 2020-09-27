@@ -30,7 +30,7 @@ html, body, #root {
 
   border-radius: 20px;
 
-  margin-bottom: 5%;
+  margin-bottom: 32px;
 
 }
 
@@ -40,7 +40,7 @@ html, body, #root {
   background-position: center;
   background-size: 22px;
   border: none;
-  /* outline: none; */
+  outline: none;
 
   min-width: 42px;
   padding: 20px; 
@@ -67,10 +67,23 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 40px 8%;
-  border-radius: 20px;
+  /* padding: 40px 8%; */
+  padding: 20px;
   background: rgba(250, 250, 250, 0.85);
   box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+
+  max-width: 100%;
+}
+
+.city--top {
+  padding-bottom: 0;
+  /* border-radius: 20px 20px 0 0; */
+}
+
+.city--bottom {
+  padding-bottom: 20px;
+  padding-top: 0;
+  border-radius: 0 0 20px 20px;
 }
 
 p {
@@ -80,9 +93,8 @@ p {
 }
 
 .city-temp {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: bold;
-  margin-top: 10px;
   color: #1e2432;
   text-align: center;
 }
@@ -104,9 +116,14 @@ p {
 }
 
 .city-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.city-icon--small {
   margin-top: 10px;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
 }
 
 .info {
@@ -120,20 +137,60 @@ p {
   border-radius: 20px;
 }
 
-.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card > div > .ant-tabs-nav {
-  /* background:red; */
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab, .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
+  background: rgba(250, 250, 250, 0.95);
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
+  background: #fff;
+  
 }
 
 .ant-tabs-tab {
   border: 20px;
 }
 
+.ant-tabs {
+  border-radius: 20px;
+}
+
+.time-card-wrapper{
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.time-card {
+  box-shadow: 4px 4px 2px 0px rgba(150, 150, 150, 0.204);
+  border-radius: 4px;
+  padding: 10px;
+  margin-right: 4px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 78px;
+}
+
+.tabs-container {
+
+  max-width: 322px;
+}
+
+
 @media only screen and (max-width: 600px) {
   .search {
       padding: 20px 7%;
   }
 
-  .city {
-      padding: 40px 20%;
+  .ant-tabs {
+    border-radius: 0;
   }
+  .city--bottom {
+    margin-bottom: 40px;
+    border-radius: 0;
+  }
+
 }

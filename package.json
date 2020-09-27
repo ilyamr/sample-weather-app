@@ -5,7 +5,6 @@
   "dependencies": {
     "antd": "^4.6.6",
     "axios": "^0.20.0",
-    "luxon": "^1.25.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3"
@@ -31,5 +30,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "luxon": "^1.25.0"
+  }
 }
