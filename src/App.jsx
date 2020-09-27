@@ -9,11 +9,15 @@ function App() {
   const [weather, setWeather] = useState({});
 
 
-  const search = async (evt) => {
-    if (evt.key === "Enter") {
+  const search = async () => {
       const data = await fetchWeather(query);
       setWeather(data);
       setQuery('');
+  }
+
+  const handleEnter = async (evt) => {
+    if (evt.key === "Enter") {
+      await search();
     }
   }
 
@@ -32,7 +36,12 @@ function App() {
   return (
     <div className="main-container">
       <h1 className="app-header">Weather app</h1>
-      <input type="text"className="search"placeholder="Search city..."value={query}onChange={(e) => setQuery(e.target.value)}onKeyPress={search}/>
+
+      <div className="search-wrapper">
+        <input type="text"className="search" placeholder="Search city..." value={query}onChange={(e) => setQuery(e.target.value)} onKeyPress={handleEnter}/>
+        <input type="submit" className="search-button" onClick={search} value=""/>
+      </div>
+
       {weather.main && (
           <div className="city">
               <h2 className="city-name">
