@@ -115,6 +115,19 @@ p {
   align-items: center;
 }
 
+.ant-tabs-top > .ant-tabs-nav, .ant-tabs-bottom > .ant-tabs-nav, .ant-tabs-top > div > .ant-tabs-nav, .ant-tabs-bottom > div > .ant-tabs-nav {
+  margin-bottom: 0;
+  border-radius: 20px;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card > div > .ant-tabs-nav {
+  /* background:red; */
+}
+
+.ant-tabs-tab {
+  border: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .search {
       padding: 20px 7%;
